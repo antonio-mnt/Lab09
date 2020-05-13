@@ -16,9 +16,9 @@ public class BordersDAO {
 	public void loadAllCountries(Map<Integer,Country> idMap, int anno) {
 
 		String sql = "SELECT distinct StateAbb,CCode,StateNme " + 
-				     "FROM contiguity, country " + 
-				     "WHERE (CCode = state1no || CCode = state2no) AND YEAR <= ? AND conttype = 1 " + 
-				     "ORDER BY StateAbb";
+				"FROM country ,contiguity " + 
+				"WHERE CCode = state1no AND YEAR <= ? " + 
+				"ORDER BY StateAbb";
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);

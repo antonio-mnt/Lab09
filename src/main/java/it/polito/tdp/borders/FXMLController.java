@@ -63,6 +63,8 @@ public class FXMLController {
     	}
     	
     	txtResult.appendText("Il numero di componenti connesse è: "+model.componentiConnessi());
+    	//txtResult.appendText("\nIl numero di vertici è: "+model.vertexNumber());
+    	//txtResult.appendText("\nIl numero di archi è: "+model.edgeNumber());
 
     }
 
@@ -71,6 +73,12 @@ public class FXMLController {
     	
     	if(comboStato.getValue()==null) {
     		txtResult.setText("Selezionare uno Stato");
+    		return;
+    	}
+    	
+
+    	if(model.trovaVicini(comboStato.getValue()).size()==1) {
+    		txtResult.setText("Non ci sono stati raggiungibili.");
     		return;
     	}
     	
